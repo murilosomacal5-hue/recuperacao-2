@@ -15,6 +15,12 @@ class LivrosModel {
     return await db.all("SELECT * FROM livros");
   }
 
+  async excluirLivro(){
+    const db = await conectarDb();
+
+    return await db.run("DELETE FROM livros WHERE id=?", [id]);
+  }
+
   async atualizarLivroPeloId(id, dados) {
     const db = await conectarDb();
 

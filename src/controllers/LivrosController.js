@@ -1,3 +1,4 @@
+const { Database } = require("sqlite");
 const { LivrosModel } = require("../models/LivrosModel");
 
 class LivrosController {
@@ -15,6 +16,19 @@ class LivrosController {
     const livros = await new LivrosModel().listarLivros;
 
     return res.status(200).json(livros);
+  }
+
+  async excluirLivro(req,res){
+    const id = req.params.id
+
+    const livro = await new LivrosModel().buscarLivroPeloId();
+    
+    if(!livro){
+      return res.status(404).json()
+    }
+    
+    await new LivrosModel().excluirLivro(id);
+    return res.status(200).json()
   }
 
   async atualizarLivroPeloId(req, res) {
