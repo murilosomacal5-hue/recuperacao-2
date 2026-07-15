@@ -4,6 +4,7 @@ const { LivrosController } = require("../controllers/LivrosController");
 const livrosRouter = express.Router();
 
 livrosRouter.get("/:id", new LivrosController().buscarLivroPeloId);
+livrosRouter.get("/", new LivrosController().listarLivro);
 livrosRouter.put("/:id", new LivrosController().atualizarLivroPeloId);
 
 module.exports = {

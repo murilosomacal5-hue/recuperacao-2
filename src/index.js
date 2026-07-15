@@ -2,7 +2,7 @@ const express = require("express");
 
 const { livrosRouter } = require("./routes/livros");
 const { conectarDb } = require("./db/conexao");
-const { logMiddleware } = require("./middlewares/log");
+const { logMiddleware, senhaMiddleware } = require("./middlewares/log");
 
 const PORT = 3000;
 
@@ -12,6 +12,7 @@ const servidor = express();
 
 servidor.use(express.json());
 servidor.use(logMiddleware);
+servidor.use(senhaMiddleware);
 
 servidor.use("/livros", livrosRouter);
 

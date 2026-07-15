@@ -11,6 +11,12 @@ class LivrosController {
     });
   }
 
+  async listarLivro(req,res){
+    const livros = await new LivrosModel().listarLivros;
+
+    return res.status(200).json(livros);
+  }
+
   async atualizarLivroPeloId(req, res) {
     const id = req.params.id;
     const dados = req.body;

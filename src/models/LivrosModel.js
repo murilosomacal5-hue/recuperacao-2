@@ -9,6 +9,12 @@ class LivrosModel {
     return livro;
   }
 
+  async listarLivros(){
+    const db = await conectarDb();
+
+    return await db.all("SELECT * FROM livros");
+  }
+
   async atualizarLivroPeloId(id, dados) {
     const db = await conectarDb();
 
